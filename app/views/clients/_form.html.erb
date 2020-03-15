@@ -39,9 +39,9 @@
       </div>
       <div class="card-footer">
         <% if current_page?(new_client_path) %>
-			<button @click="saveUser" class="button is-link">Criar Currículo</button>
+			<button @click="saveClient" class="button is-link">Criar Currículo</button>
     		<% else %>
-    			<button @click="saveUser" class="button is-link">Update</button>
+    			<button @click="updateClient" class="button is-link">Update</button>
     		<% end %>
 
 
@@ -51,7 +51,7 @@
 
   <div class='column is-two-thirds preview card'>
     <div id="cv-preview" class="card-content">
-      <h3 class="center title name">{{ client.name }}</h3>
+      <h3 class="center title name">{{ client.name }} - {{ client.id }}</h3>
       <p class="center subtitle"><b v-if="client.phone != null">Telefone de contato:</b> {{ client.phone }}    <b v-if="client.email != null">Email:</b> {{ client.email }}    <b v-if="client.gender != null">Sexo:</b> {{ client.gender }}</p>
 
       <div class="description">

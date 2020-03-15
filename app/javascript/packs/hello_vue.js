@@ -16,7 +16,9 @@ document.addEventListener('turbolinks:load', () => {
     var app = new Vue({
       el: element,
       data: function() {
-        return { client: client }
+        return {
+          client: client
+        }
       },
 
 
@@ -24,29 +26,25 @@ document.addEventListener('turbolinks:load', () => {
       methods: {
 
 
-
-        saveUser: function() {
-          //create a new client
-
-          if (this.id == null) {
+        //create a client
+        saveClient: function() {
           this.$http.post('/clients', { client: this.client }).then(response => {
             Turbolinks.visit(`/clients/${response.body.id}`)
           }, response => {
             console.log(response)
           })
 
-          //edit a client
-        } else{
-          this.$http.put(`/clients/${this.id}.json/edit`, { client: this.client }).then(response => {
-            Turbolinks.visit(`/clients/${response.body.id}`)
-          }, response => {
-            console.log(response)
-          })
-        }
       },
 
-      // End
+        //update a client
+      updateClient: function(client){
 
+        this.$http.put(`/clients/${this.client.id}`, { client: this.client }).then(response => {
+          Turbolinks.visit(`/clients/${response.body.id}`)
+        }, response => {
+          console.log(response)
+        })
+      }
 
 
 
