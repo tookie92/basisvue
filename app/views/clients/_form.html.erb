@@ -38,7 +38,13 @@
         </select>
       </div>
       <div class="card-footer">
-        <button @click="saveUser" class="button is-link">Criar Currículo</button>
+        <% if current_page?(new_client_path) %>
+			<button @click="saveUser" class="button is-link">Criar Currículo</button>
+    		<% else %>
+    			<button @click="saveUser" class="button is-link">Update</button>
+    		<% end %>
+
+
       </div>
     </div>
   </div>
